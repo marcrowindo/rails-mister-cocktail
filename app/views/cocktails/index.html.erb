@@ -1,9 +1,22 @@
+<div class="header-image" style="background-image: url('<%= image_path("bh.jpg") %>'); background-size: cover; background-position: center">
+
 <h1>Mix Master Marc</h1>
 
-<ul>
+</div>
+
 <% @cocktails.each do |cocktail| %>
-  <li><%= link_to cocktail.name, cocktail_path(cocktail.id) %></li>
+
+<%= link_to cocktail_path(cocktail.id) do %>
+  <div class="card"
+    style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+    url('<%= cl_image_path cocktail.photo, height: 300, width: 400, crop: :fill %>'); background-size: cover; background-position: center">
+
+    <div class="card-description">
+      <h2><%= cocktail.name %></h2>
+    </div>
+  </div>
+
+  <% end %>
 <% end %>
-</ul>
 
 <%= link_to "add a new cocktail", new_cocktail_path %>
